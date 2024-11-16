@@ -1,0 +1,64 @@
+:: StoryTitle
+testgame
+
+
+:: StoryData
+{
+  "ifid": "A435D41C-7323-488D-B25B-01D5C14A5ED9",
+  "format": "Harlowe",
+  "format-version": "3.3.9",
+  "start": "start",
+  "zoom": 1
+}
+
+
+:: detective {"position":"2400,1375","size":"100,100"}
+(set: $detective to True)
+Go to [[first_mission]].
+
+
+:: detective_wins {"position":"2400,1775","size":"100,100"}
+Detective ending.
+
+
+:: first_mission {"position":"2525,1525","size":"100,100"}
+Go to [[second_mission]].
+
+
+:: haker {"position":"2525,1375","size":"100,100"}
+(set: $haker to True)
+Go to [[first_mission]].
+
+
+:: haker_wins {"position":"2525,1775","size":"100,100"}
+Haker ending.
+
+
+:: second_mission {"position":"2525,1650","size":"100,100"}
+(if: $haker is True)[
+Go to [[haker_wins]].
+]
+(if: $soldier is True)[
+Go to [[soldier_wins]].
+]
+(if: $detective is True)[
+Go to [[detective_wins]].
+]
+
+
+
+:: soldier {"position":"2650,1375","size":"100,100"}
+(set: $soldier to True)
+Go to [[first_mission]].
+
+
+:: soldier_wins {"position":"2650,1775","size":"100,100"}
+Soldier ending.
+
+
+:: start {"position":"2525,1250","size":"100,100"}
+Choose character:
+
+If you want to be a haker - go to [[haker]].
+If you want to be a soldier - go to [[soldier]].
+If you want to be a detective - go to [[detective]].
